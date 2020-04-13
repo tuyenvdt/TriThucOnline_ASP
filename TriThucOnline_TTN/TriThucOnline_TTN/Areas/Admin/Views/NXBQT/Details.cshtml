@@ -1,0 +1,35 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li class="breadcrumb-item active"> Nhà Xuất Bản</li>
+</ul>
+
+<div class="container">
+    <div class="row">
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                @*<td>@Model.Rows[i][0]</td>*@
+
+                <a href="@Url.Action("Details", "DAUSACH", new { @id = @Model.Rows[i][0] })">
+
+                    <img src="@Model.Rows[i][7]" style="width:80%;height:70%" alt="Alternate Text" />
+                    <p>@Model.Rows[i][1]</p>
+                </a>
+
+                <p>@Model.Rows[i][6]</p>
+
+            </div>
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Thêm Tác Gỉa", "Create", "TACGIA")
+<hr />
+<table class="table table-bordered table-striped">
+    <tr>
+        @*<th>Mã Nhà Xuất Bản</th>*@
+        <th>Tên TÁC GIẢ</th>
+        <th></th>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            @*<td>@Model.Rows[i][0]</td>*@
+            <td>@Model.Rows[i][1]</td>
+            <td>
+                <a href="@Url.Action("Edit","TACGIA", new { @id=@Model.Rows[i][0]})">Chỉnh sửa </a>
+                <a href="@Url.Action("delete","TACGIA", new { @id=@Model.Rows[i][0]})">Xóa </a>
+                @*@Html.ActionLink("Chỉnh sửa","Edit","NXB", new { @id = @Model.Rows[i][0]})*@
+            </td>
+        </tr>
+    }
+</table>
+

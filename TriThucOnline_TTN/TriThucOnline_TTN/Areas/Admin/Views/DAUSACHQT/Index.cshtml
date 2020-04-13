@@ -1,0 +1,46 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAmin.cshtml";
+}
+
+@Html.ActionLink("Tạo Đầu sách mới", "Create", "DAUSACHQT")
+    <hr />
+<table class="table table-bordered table-striped">
+    <tr>
+        @*<th>Mã Nhà Xuất Bản</th>*@
+        <th>Tên Đầu sách</th>
+        <th>Mã NXB</th>
+        <th>Mã thể loại</th>
+        <th>Mã tác giả</th>
+        <th>Năm xuất bản</th>
+        <th>Gía</th>
+        <th>Ảnh minh họa</th>
+        <th>Số trang</th>
+        <th>Bố cục sách</th>
+        <th>Trích dẫn</th>
+        <th></th>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            @*<td>@Model.Rows[i][0]</td>*@
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td><img src="@Model.Rows[i][7]" alt="Alternate Text" /></td>
+            <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+            <td>@Model.Rows[i][10]</td>
+            <td>
+                <a href="@Url.Action("Edit","DAUSACHQT", new { @id=@Model.Rows[i][0]})">Chỉnh sửa </a>
+                <a href="@Url.Action("delete","DAUSACHQT", new { @id=@Model.Rows[i][0]})">Xóa </a>
+                @*@Html.ActionLink("Chỉnh sửa","Edit","NXB", new { @id = @Model.Rows[i][0]})*@
+            </td>
+        </tr>
+    }
+</table>
+

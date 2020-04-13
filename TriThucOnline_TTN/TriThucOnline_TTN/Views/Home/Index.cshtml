@@ -1,0 +1,308 @@
+﻿@model System.Data.DataTable
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="Scripts/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="Scripts/slick/slick/slick-theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,700&display=swap&subset=vietnamese" rel="stylesheet">
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .slick-slide {
+            margin: 0px 20px;
+        }
+
+            .slick-slide img {
+                width: 100%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #f11499;
+            zoom: 1.5;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: .2;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        .vertical-menu {
+            width: 100%;
+        }
+
+            .vertical-menu h4 {
+                font-size: 18px;
+                background-color: #00ff6f;
+                padding: 12px;
+                margin: 0;
+                text-align: center;
+                font-weight: 600;
+                color: white;
+            }
+
+            .vertical-menu a {
+                background-color: #fff;
+                color: black;
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                font-family: 'Baloo Chettan 2', cursive;
+                font-size: 17px;
+            }
+
+                .vertical-menu a:hover {
+                    background-color: #f11499;
+                    color: white;
+                }
+
+                .vertical-menu a i {
+                    padding-right: 10px;
+                    vertical-align: middle;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" style="padding-right:0;">
+                <div class="vertical-menu">
+                    <h4>Danh Mục Sản Phẩm</h4>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =1 })"><i class="fas fa-book-reader"></i>Văn Học</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =2 })"><i class="fas fa-child"></i>sách thiếu nhi</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =3 })"><i class="fas fa-history"></i>Tiểu sử hồi kí</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =4 })"><i class="fas fa-book"></i>sách giáo khoa - tham khảo</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =5 })"><i class="fas fa-language"></i>sách Ngoại ngữ</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =6 })"><i class="fas fa-chart-line"></i>Kinh Tế</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =7 })"><i class="far fa-grin"></i>Tâm Lí - Kĩ năng sống</a>
+                    <a href="@Url.Action("Details","THELOAI", new { @id =8 })"><i class="fas fa-baby"></i>Nuôi dạy con</a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-xl-7" style="padding-left:0;">
+                <section class="regular slider" style="margin-top:0;">
+                    <div>
+                        <img src="https://static.ybox.vn/2018/5/4/1526528133509-Slide1.JPG">
+                    </div>
+                    <div>
+                        <img src="https://static.ybox.vn/2018/5/4/1526528133509-Slide1.JPG">
+                    </div>
+                    <div>
+                        <img src="https://static.ybox.vn/2018/5/4/1526528133509-Slide1.JPG">
+                    </div>
+                    <div>
+                        <img src="https://static.ybox.vn/2018/5/4/1526528133509-Slide1.JPG">
+                    </div>
+                    <div>
+                        <img src="https://static.ybox.vn/2018/5/4/1526528133509-Slide1.JPG">
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    @*===================================== BANNER - CENTER- ADVERTISMENT =======================*@
+
+    <div class="container-fluid banner-center">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-star-of-david"></i>
+                <p>Cung cấp các đầu sách chính hãng, chất lượng nhất </p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-fighter-jet"></i>
+                <p>Giao hàng nhanh chóng</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-hand-holding-usd"></i>
+                <p>Chính sách đổi trả, hoàn tiền dễ dàng</p>
+            </div>
+        </div>
+    </div>
+
+    @*================================ TAB-MENU  BOOK -=========================================*@
+
+
+
+    <div class="container">
+        <h2>Các thể loại sách</h2>
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#vanhoc">Văn học</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#kinhte">Kinh tế</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tamli">Tâm lí-Kĩ năng sống</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#daycon">Nuôi dạy con</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#thieunhi">Sách thiếu nhi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#hoiki">Tiểu sử-hồi kí</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#giaokhoa">Sách giáo khoa-tham khảo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#ngoaingu">Sách học ngoại ngữ</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="vanhoc" class="container tab-pane active">
+                <br>
+                <section class="center slider">
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+                    <div>
+                        @*<td>@Model.Rows[i][0]</td>*@
+
+                        <a href="@Url.Action("Details","DAUSACH", new { @id=@Model.Rows[i][0]})">
+
+                            <img src="@Model.Rows[i][7]" alt="Alternate Text" />
+                            <p>@Model.Rows[i][1]</p>
+                        </a>
+                        
+                        <p>@Model.Rows[i][6]</p>
+
+                    </div>
+                    }
+                </section>
+
+            </div>
+            <div id="kinhte" class="container tab-pane fade">
+                <br>
+                
+            </div>
+            <div id="tamli" class="container tab-pane fade">
+                <br>
+                
+            </div>
+            <div id="daycon" class="container tab-pane fade">
+                <br>
+
+            </div>
+            <div id="thieunhi" class="container tab-pane fade">
+                <br>
+
+            </div>
+            <div id="hoiki" class="container tab-pane fade">
+                <br>
+
+            </div>
+            <div id="giaokhoa" class="container tab-pane fade">
+                <br>
+
+            </div>
+            <div id="ngoaingu" class="container tab-pane fade">
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+
+            $(".regular").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000
+            });
+            $(".center").slick({
+                dots: true,
+                infinite: true,
+                centerMode: true,
+                slidesToShow: 5,
+                slidesToScroll: 3,
+                responsive: [
+              {
+                  breakpoint: 1000,
+                  settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 2,
+                      infinite: true,
+                      dots: true
+                  }
+              },
+              {
+                  breakpoint: 600,
+                  settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 1
+                  }
+              }
+            ]
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+

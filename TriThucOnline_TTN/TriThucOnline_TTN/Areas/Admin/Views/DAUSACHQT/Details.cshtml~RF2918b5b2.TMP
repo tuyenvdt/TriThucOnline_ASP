@@ -1,0 +1,104 @@
+﻿@model TRITHUCONLINE_FINALLLLL.DAUSACH
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+
+<style>
+    .book__image{
+        text-align:center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="col-lg-5">
+        <div class="book__image">
+            <img src="@Html.DisplayFor(model => model.PicBook)" alt="Alternate Text" />
+        </div>
+        <div class="button-buy">
+            <div class="button-buy--cart" style="float:left">
+                <button type="button">
+                    <i class="fas fa-cart-plus"></i>
+                    Thêm vào giỏ hàng
+                </button>
+            </div>
+            <div class="button-buy--buy">
+                <button type="button">
+                    mua hàng
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-7">
+        <h3 class="book__name">
+            @Html.DisplayFor(model => model.Tensach)
+        </h3>
+        <p class="book__NXB">
+            Nhà xuất bản :  
+            <a href="@Url.Action("Details", "NXB", new { @id = @Model.NXB.MaNXB })">
+                @Html.DisplayFor(model => model.NXB.TenNXB)
+            </a> 
+        </p>
+        <p class="book__tacgia">
+            Tác giả : 
+            <a href="@Url.Action("Details","TACGIA",new { @id = @Model.TACGIA.MaTG})">
+                @Html.DisplayFor(model=>model.TACGIA.TenTG)
+            </a>
+        </p>
+        
+    </div>
+</div>
+<div>
+    <h4>DAUSACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Namxuatban)
+        </dd>
+
+      
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sotrang)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Bocucsach)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Trichdan)
+        </dd>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.TACGIA.TenTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THELOAI.TenTL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.TenTL)
+        </dd>
+
+        <dd>
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Masach }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

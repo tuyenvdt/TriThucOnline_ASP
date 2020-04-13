@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe205753266845b398c38188bc725e5a" Name="Diagram1">
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.CT_HOADON" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.DAUSACH" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.HOADON" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.NXB" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.TACGIA" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_TriThucOnline_BanSachModel.THELOAI" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FK__CT_HOADON__Mahd__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FK__CT_HOADON__Masac__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FK__DAUSACH__MaTG__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FK__DAUSACH__MaTL__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FKNAME" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_TriThucOnline_BanSachModel.FK__HOADON__IDUser__440B1D61" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

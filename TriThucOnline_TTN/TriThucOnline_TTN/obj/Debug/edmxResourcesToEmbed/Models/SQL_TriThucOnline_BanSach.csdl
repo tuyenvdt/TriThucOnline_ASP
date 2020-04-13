@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQL_TriThucOnline_BanSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CT_HOADON">
+    <Key>
+      <PropertyRef Name="Mahd" />
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Mahd" Type="Int32" Nullable="false" />
+    <Property Name="Masach" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Double" />
+    <Property Name="GiamGia" Type="Double" />
+    <Property Name="ThanhTien" Type="Double" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK__CT_HOADON__Mahd__46E78A0C" FromRole="CT_HOADON" ToRole="HOADON" />
+    <NavigationProperty Name="DAUSACH" Relationship="Self.FK__CT_HOADON__Masac__47DBAE45" FromRole="CT_HOADON" ToRole="DAUSACH" />
+  </EntityType>
+  <EntityType Name="DAUSACH">
+    <Key>
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Masach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tensach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaNXB" Type="Int32" />
+    <Property Name="MaTL" Type="Int32" />
+    <Property Name="MaTG" Type="Int32" />
+    <Property Name="Namxuatban" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PicBook" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sotrang" Type="Int32" />
+    <Property Name="Bocucsach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Trichdan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CT_HOADON" Relationship="Self.FK__CT_HOADON__Masac__47DBAE45" FromRole="DAUSACH" ToRole="CT_HOADON" />
+    <NavigationProperty Name="TACGIA" Relationship="Self.FK__DAUSACH__MaTG__412EB0B6" FromRole="DAUSACH" ToRole="TACGIA" />
+    <NavigationProperty Name="THELOAI" Relationship="Self.FK__DAUSACH__MaTL__403A8C7D" FromRole="DAUSACH" ToRole="THELOAI" />
+    <NavigationProperty Name="NXB" Relationship="Self.FKNAME" FromRole="DAUSACH" ToRole="NXB" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="Mahd" />
+    </Key>
+    <Property Name="Mahd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngaymuahang" Type="DateTime" Precision="3" />
+    <Property Name="IDUser" Type="Int32" />
+    <NavigationProperty Name="CT_HOADON" Relationship="Self.FK__CT_HOADON__Mahd__46E78A0C" FromRole="HOADON" ToRole="CT_HOADON" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__IDUser__440B1D61" FromRole="HOADON" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PicUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="Int32" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__IDUser__440B1D61" FromRole="KHACHHANG" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="NXB">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNXB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DAUSACHes" Relationship="Self.FKNAME" FromRole="NXB" ToRole="DAUSACH" />
+  </EntityType>
+  <EntityType Name="TACGIA">
+    <Key>
+      <PropertyRef Name="MaTG" />
+    </Key>
+    <Property Name="MaTG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Thongtingioithieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PicTG" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DAUSACHes" Relationship="Self.FK__DAUSACH__MaTG__412EB0B6" FromRole="TACGIA" ToRole="DAUSACH" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="MaTL" />
+    </Key>
+    <Property Name="MaTL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DAUSACHes" Relationship="Self.FK__DAUSACH__MaTL__403A8C7D" FromRole="THELOAI" ToRole="DAUSACH" />
+  </EntityType>
+  <Association Name="FK__CT_HOADON__Mahd__46E78A0C">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CT_HOADON" Type="Self.CT_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="Mahd" />
+      </Principal>
+      <Dependent Role="CT_HOADON">
+        <PropertyRef Name="Mahd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CT_HOADON__Masac__47DBAE45">
+    <End Role="DAUSACH" Type="Self.DAUSACH" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CT_HOADON" Type="Self.CT_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAUSACH">
+        <PropertyRef Name="Masach" />
+      </Principal>
+      <Dependent Role="CT_HOADON">
+        <PropertyRef Name="Masach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DAUSACH__MaTG__412EB0B6">
+    <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DAUSACH" Type="Self.DAUSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TACGIA">
+        <PropertyRef Name="MaTG" />
+      </Principal>
+      <Dependent Role="DAUSACH">
+        <PropertyRef Name="MaTG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DAUSACH__MaTL__403A8C7D">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DAUSACH" Type="Self.DAUSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="MaTL" />
+      </Principal>
+      <Dependent Role="DAUSACH">
+        <PropertyRef Name="MaTL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKNAME">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DAUSACH" Type="Self.DAUSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="DAUSACH">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__IDUser__440B1D61">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SQL_TriThucOnline_BanSachEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CT_HOADON" EntityType="Self.CT_HOADON" />
+    <EntitySet Name="DAUSACHes" EntityType="Self.DAUSACH" />
+    <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="NXBs" EntityType="Self.NXB" />
+    <EntitySet Name="TACGIAs" EntityType="Self.TACGIA" />
+    <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
+    <AssociationSet Name="FK__CT_HOADON__Mahd__46E78A0C" Association="Self.FK__CT_HOADON__Mahd__46E78A0C">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CT_HOADON" EntitySet="CT_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CT_HOADON__Masac__47DBAE45" Association="Self.FK__CT_HOADON__Masac__47DBAE45">
+      <End Role="DAUSACH" EntitySet="DAUSACHes" />
+      <End Role="CT_HOADON" EntitySet="CT_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DAUSACH__MaTG__412EB0B6" Association="Self.FK__DAUSACH__MaTG__412EB0B6">
+      <End Role="TACGIA" EntitySet="TACGIAs" />
+      <End Role="DAUSACH" EntitySet="DAUSACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DAUSACH__MaTL__403A8C7D" Association="Self.FK__DAUSACH__MaTL__403A8C7D">
+      <End Role="THELOAI" EntitySet="THELOAIs" />
+      <End Role="DAUSACH" EntitySet="DAUSACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FKNAME" Association="Self.FKNAME">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="DAUSACH" EntitySet="DAUSACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__IDUser__440B1D61" Association="Self.FK__HOADON__IDUser__440B1D61">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
